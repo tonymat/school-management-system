@@ -1,0 +1,137 @@
+.home-page {
+    flex: 1;
+    padding: var(--space-2xl) 0;
+}
+
+.hero {
+    text-align: center;
+    padding: var(--space-2xl) 0;
+    margin-bottom: var(--space-2xl);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.feature-card {
+    padding: var(--space-2xl);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-icon {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+.feature-icon-secondary {
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+}
+
+.feature-card h3 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.feature-cta {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.feature-card:nth-child(2) .feature-cta {
+    color: var(--secondary);
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+}
+
+.stat-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: hsla(210, 100%, 50%, 0.1);
+    color: var(--primary);
+}
+
+.stat-info h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+}
+
+.stat-info p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .features-grid,
+    .quick-stats {
+        grid-template-columns: 1fr;
+    }
+}

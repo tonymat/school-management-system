@@ -1,0 +1,73 @@
+.students-page {
+    flex: 1;
+    padding: var(--space-2xl) 0;
+}
+
+.students-page .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-xl);
+    gap: var(--space-lg);
+}
+
+.students-page .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-xs);
+}
+
+.students-page .page-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.students-page .search-bar {
+    position: relative;
+    margin-bottom: var(--space-xl);
+}
+
+.students-page .search-bar svg {
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.students-page .search-input {
+    width: 100%;
+    padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-md) * 3);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all var(--transition-base);
+}
+
+.students-page .search-input:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px hsla(280, 60%, 55%, 0.1);
+}
+
+.students-grid {
+    min-height: 400px;
+}
+
+@media (max-width: 768px) {
+    .students-page .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .students-page .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .students-page .page-header .btn {
+        width: 100%;
+    }
+}

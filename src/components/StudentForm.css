@@ -1,0 +1,90 @@
+.student-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.student-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+    .student-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.student-form .photo-upload {
+    display: flex;
+    justify-content: center;
+}
+
+.student-form .photo-upload-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 200px;
+    height: 200px;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--background);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--text-muted);
+}
+
+.student-form .photo-upload-btn:hover {
+    border-color: var(--secondary);
+    color: var(--secondary);
+    background: hsla(280, 60%, 55%, 0.05);
+}
+
+.student-form .photo-preview {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.student-form .photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.student-form .remove-photo {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    padding: var(--space-xs);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.student-form .remove-photo:hover {
+    background: var(--error);
+}
+
+.student-form .form-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: flex-end;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+}
+
+.student-form .form-actions .btn {
+    min-width: 120px;
+}

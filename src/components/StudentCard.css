@@ -1,0 +1,81 @@
+.student-card {
+    position: relative;
+    padding: var(--space-lg);
+}
+
+.student-card .card-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-md);
+    background: var(--background);
+}
+
+.student-card .card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.student-card .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    background: var(--background);
+}
+
+.student-card .card-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+}
+
+.student-card .card-role {
+    color: var(--secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+}
+
+.student-card .card-id {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-md);
+}
+
+.student-card .card-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.student-card .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.student-card .contact-item svg {
+    flex-shrink: 0;
+    color: var(--secondary);
+}
+
+.student-card .card-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.student-card .card-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+}
