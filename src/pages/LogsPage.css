@@ -1,0 +1,161 @@
+.logs-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, hsl(210, 100%, 60%), hsl(280, 60%, 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.loading,
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+}
+
+.logs-table-container {
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.logs-table thead {
+    background: var(--surface-hover);
+}
+
+.logs-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border);
+}
+
+.logs-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.logs-table tbody tr:hover {
+    background: var(--surface-hover);
+}
+
+.timestamp {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.entity-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: hsl(210, 100%, 20%);
+    color: hsl(210, 100%, 70%);
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.action-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-create {
+    background: hsl(120, 60%, 20%);
+    color: hsl(120, 60%, 70%);
+}
+
+.badge-update {
+    background: hsl(45, 100%, 20%);
+    color: hsl(45, 100%, 70%);
+}
+
+.badge-delete {
+    background: hsl(0, 70%, 20%);
+    color: hsl(0, 70%, 70%);
+}
+
+.entity-id {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.payload details {
+    cursor: pointer;
+}
+
+.payload summary {
+    color: var(--primary);
+    font-size: 0.875rem;
+    user-select: none;
+}
+
+.payload summary:hover {
+    text-decoration: underline;
+}
+
+.payload pre {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: var(--background);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    overflow-x: auto;
+    max-width: 400px;
+}
+
+.no-data {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .logs-page {
+        padding: 1rem;
+    }
+
+    .logs-table-container {
+        overflow-x: auto;
+    }
+
+    .logs-table {
+        min-width: 800px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+}

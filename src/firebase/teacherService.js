@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage, hasFirebaseConfig } from './config';
+import { logActivity } from './activityLogService';
 
 const TEACHERS_COLLECTION = 'teachers';
 
@@ -25,6 +26,7 @@ export const createTeacher = async (teacherData) => {
             createdAt: serverTimestamp(),
             updatedAt: serverTimestamp()
         });
+        await logActivity({ entity: 'teacher', entityId: docRef.id, action: 'create', payload: teacherData });
         return { id: docRef.id, ...teacherData };
     } catch (error) {
         console.error('Error creating teacher:', error);
@@ -69,6 +71,7 @@ export const updateTeacher = async (teacherId, updates) => {
             ...updates,
             updatedAt: serverTimestamp()
         });
+        await logActivity({ entity: 'teacher', entityId: teacherId, action: 'update', payload: updates });
         return true;
     } catch (error) {
         console.error('Error updating teacher:', error);
@@ -84,6 +87,7 @@ export const deleteTeacher = async (teacherId) => {
 
     try {
         await deleteDoc(doc(db, TEACHERS_COLLECTION, teacherId));
+        await logActivity({ entity: 'teacher', entityId: teacherId, action: 'delete' });
         return true;
     } catch (error) {
         console.error('Error deleting teacher:', error);

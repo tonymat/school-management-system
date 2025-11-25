@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { GraduationCap, Users, UserCircle } from 'lucide-react';
+import { GraduationCap, Users, UserCircle, Activity } from 'lucide-react';
 import './Header.css';
 
 const Header = ({ onAddClick }) => {
     const location = useLocation();
     const isTeachersPage = location.pathname === '/teachers';
     const isStudentsPage = location.pathname === '/students';
+    const isLogsPage = location.pathname === '/logs';
 
     return (
         <header className="header">

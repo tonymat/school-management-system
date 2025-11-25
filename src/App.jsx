@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import TeachersPage from './pages/TeachersPage';
 import StudentsPage from './pages/StudentsPage';
+import LogsPage from './pages/LogsPage';
 
 console.log('✅ App.jsx loaded');
 
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/teachers" element={<TeachersPage />} />
                         <Route path="/students" element={<StudentsPage />} />
+                        <Route path="/logs" element={<LogsPage />} />
                     </Routes>
                 </main>
             </div>
