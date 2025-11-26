@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import { getAuth } from 'firebase/auth';
 
 // Check if Firebase config is available
 const hasFirebaseConfig = import.meta.env.VITE_FIREBASE_API_KEY &&
@@ -19,12 +20,14 @@ const firebaseConfig = hasFirebaseConfig ? {
 let app = null;
 let db = null;
 let storage = null;
+let auth = null;
 
 if (firebaseConfig) {
   try {
     app = initializeApp(firebaseConfig);
     db = getFirestore(app);
     storage = getStorage(app);
+    auth = getAuth(app);
     console.log('✅ Firebase initialized successfully');
   } catch (error) {
     console.warn('⚠️ Firebase initialization failed:', error.message);
@@ -33,5 +36,5 @@ if (firebaseConfig) {
   console.warn('⚠️ Firebase not configured. Please set up .env.local file. See README.md for instructions.');
 }
 
-export { db, storage, hasFirebaseConfig };
+export { db, storage, auth, hasFirebaseConfig };
 export default app;

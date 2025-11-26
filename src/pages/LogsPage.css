@@ -90,27 +90,45 @@
 }
 
 .badge-create {
-    background: hsl(120, 60%, 20%);
-    color: hsl(120, 60%, 70%);
+    background: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.2);
 }
 
 .badge-update {
-    background: hsl(45, 100%, 20%);
-    color: hsl(45, 100%, 70%);
+    background: rgba(255, 152, 0, 0.1);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.2);
 }
 
 .badge-delete {
-    background: hsl(0, 70%, 20%);
-    color: hsl(0, 70%, 70%);
+    background: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+    border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.badge-login {
+    background: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+.badge-logout {
+    background: rgba(158, 158, 158, 0.1);
+    color: #9e9e9e;
+    border: 1px solid rgba(158, 158, 158, 0.2);
+}
+
+.badge-signup {
+    background: rgba(156, 39, 176, 0.1);
+    color: #9c27b0;
+    border: 1px solid rgba(156, 39, 176, 0.2);
 }
 
 .entity-id {
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
 .payload details {
@@ -119,43 +137,33 @@
 
 .payload summary {
     color: var(--primary);
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     user-select: none;
-}
-
-.payload summary:hover {
-    text-decoration: underline;
 }
 
 .payload pre {
     margin-top: 0.5rem;
-    padding: 0.75rem;
     background: var(--background);
-    border-radius: 6px;
+    padding: 0.5rem;
+    border-radius: 4px;
     font-size: 0.75rem;
     overflow-x: auto;
-    max-width: 400px;
+    color: var(--text-secondary);
 }
 
 .no-data {
     color: var(--text-tertiary);
-    font-style: italic;
+    font-size: 0.85rem;
 }
 
 @media (max-width: 768px) {
-    .logs-page {
-        padding: 1rem;
-    }
-
     .logs-table-container {
         overflow-x: auto;
     }
 
-    .logs-table {
-        min-width: 800px;
-    }
-
-    .page-header h1 {
-        font-size: 1.5rem;
+    .logs-table th,
+    .logs-table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
     }
 }

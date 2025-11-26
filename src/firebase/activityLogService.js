@@ -1,5 +1,5 @@
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db, hasFirebaseConfig } from './config';
+import { db, hasFirebaseConfig, auth } from './config';
 
 /**
  * Write an activity log entry to Firestore.
@@ -15,13 +15,18 @@ export const logActivity = async ({ entity, entityId, action, payload }) => {
         console.warn('⚠️ Firebase not configured – activity log skipped');
         return;
     }
+
     try {
+        const user = auth?.currentUser;
+
         await addDoc(collection(db, 'activityLogs'), {
             entity,
             entityId,
             action,
             payload: payload || null,
             timestamp: serverTimestamp(),
+            userId: user ? user.uid : 'anonymous',
+            userEmail: user ? user.email : 'anonymous'
         });
     } catch (err) {
         console.error('❌ Failed to write activity log:', err);

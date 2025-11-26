@@ -1,13 +1,26 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { GraduationCap, Users, UserCircle, Activity } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GraduationCap, Users, UserCircle, LogOut, LogIn } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import './Header.css';
 
 const Header = ({ onAddClick }) => {
     const location = useLocation();
+    const navigate = useNavigate();
+    const { currentUser, logout } = useAuth();
+
     const isTeachersPage = location.pathname === '/teachers';
     const isStudentsPage = location.pathname === '/students';
     const isLogsPage = location.pathname === '/logs';
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error('Failed to log out', error);
+        }
+    };
 
     return (
         <header className="header">
@@ -35,11 +48,28 @@ const Header = ({ onAddClick }) => {
                         </Link>
                     </nav>
 
-                    {(isTeachersPage || isStudentsPage) && onAddClick && (
-                        <button className="btn btn-primary" onClick={onAddClick}>
-                            + Add {isTeachersPage ? 'Teacher' : 'Student'}
-                        </button>
-                    )}
+                    <div className="header-actions">
+                        {currentUser ? (
+                            <>
+                                {(isTeachersPage || isStudentsPage) && onAddClick && (
+                                    <button className="btn btn-primary" onClick={onAddClick}>
+                                        + Add {isTeachersPage ? 'Teacher' : 'Student'}
+                                    </button>
+                                )}
+                                <div className="user-info">
+                                    <span className="user-email">{currentUser.email}</span>
+                                    <button onClick={handleLogout} className="btn-icon" title="Logout">
+                                        <LogOut size={20} />
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <Link to="/login" className="btn btn-primary">
+                                <LogIn size={18} style={{ marginRight: '8px' }} />
+                                Sign In
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
         </header>
