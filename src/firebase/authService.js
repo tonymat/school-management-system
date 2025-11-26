@@ -4,7 +4,8 @@ import {
     signOut as firebaseSignOut,
     onAuthStateChanged as firebaseOnAuthStateChanged,
 } from 'firebase/auth';
-import { auth, hasFirebaseConfig } from './config';
+import { auth, hasFirebaseConfig, db } from './config';
+import { setDoc, doc } from 'firebase/firestore';
 import { logActivity } from './activityLogService';
 
 /**
@@ -13,22 +14,33 @@ import { logActivity } from './activityLogService';
  * @param {string} password - User password
  * @returns {Promise<Object>} User credential
  */
-export const signUp = async (email, password) => {
+export const signUp = async (email, password, role = null) => {
     if (!hasFirebaseConfig || !auth) {
         throw new Error('Firebase not configured. Please set up .env.local file.');
     }
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-        // Log the signup activity
+        const uid = userCredential.user.uid;
+        // If a role is provided, store it in Firestore
+        if (role && db) {
+            try {
+                await setDoc(doc(db, 'users', uid), {
+                    email: userCredential.user.email,
+                    role,
+                    createdAt: new Date().toISOString()
+                });
+            } catch (e) {
+                console.error('Failed to save user role:', e);
+            }
+        }
+        // Log the signup activity with role info
         await logActivity({
             entity: 'auth',
-            entityId: userCredential.user.uid,
+            entityId: uid,
             action: 'signup',
-            payload: { email: userCredential.user.email }
+            payload: { email: userCredential.user.email, role }
         });
-
         return userCredential.user;
     } catch (error) {
         console.error('Error signing up:', error);

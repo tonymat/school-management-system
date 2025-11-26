@@ -28,8 +28,8 @@ export const AuthProvider = ({ children }) => {
         return await signIn(email, password);
     };
 
-    const signup = async (email, password) => {
-        return await signUp(email, password);
+    const signup = async (email, password, role = null) => {
+        return await signUp(email, password, role);
     };
 
     const logout = async () => {

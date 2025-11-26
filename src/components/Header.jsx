@@ -11,7 +11,6 @@ const Header = ({ onAddClick }) => {
 
     const isTeachersPage = location.pathname === '/teachers';
     const isStudentsPage = location.pathname === '/students';
-    const isLogsPage = location.pathname === '/logs';
 
     const handleLogout = async () => {
         try {
@@ -32,17 +31,11 @@ const Header = ({ onAddClick }) => {
                     </Link>
 
                     <nav className="header-nav">
-                        <Link
-                            to="/teachers"
-                            className={`nav-link ${isTeachersPage ? 'active' : ''}`}
-                        >
+                        <Link to="/teachers" className={`nav-link ${isTeachersPage ? 'active' : ''}`}>
                             <Users size={20} />
                             <span>Teachers</span>
                         </Link>
-                        <Link
-                            to="/students"
-                            className={`nav-link ${isStudentsPage ? 'active' : ''}`}
-                        >
+                        <Link to="/students" className={`nav-link ${isStudentsPage ? 'active' : ''}`}>
                             <UserCircle size={20} />
                             <span>Students</span>
                         </Link>
@@ -64,10 +57,26 @@ const Header = ({ onAddClick }) => {
                                 </div>
                             </>
                         ) : (
-                            <Link to="/login" className="btn btn-primary">
-                                <LogIn size={18} style={{ marginRight: '8px' }} />
-                                Sign In
-                            </Link>
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <Link to="/login" className="btn btn-primary">
+                                    <LogIn size={18} style={{ marginRight: '8px' }} />
+                                    Sign In
+                                </Link>
+                                <Link
+                                    to="/signup?role=teacher"
+                                    className="btn btn-secondary"
+                                    style={{ background: 'transparent', border: '1px solid var(--primary)', color: 'var(--primary)' }}
+                                >
+                                    Teacher Sign Up
+                                </Link>
+                                <Link
+                                    to="/signup?role=student"
+                                    className="btn btn-secondary"
+                                    style={{ background: 'transparent', border: '1px solid var(--primary)', color: 'var(--primary)' }}
+                                >
+                                    Student Sign Up
+                                </Link>
+                            </div>
                         )}
                     </div>
                 </div>
@@ -77,4 +86,3 @@ const Header = ({ onAddClick }) => {
 };
 
 export default Header;
-
